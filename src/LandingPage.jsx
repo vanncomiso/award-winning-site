@@ -190,8 +190,8 @@ const ImageClipBox = ({ src, clipClass }) => (
   </div>
 );
 
-// Main Single Page Component
-const SinglePage = () => {
+// Main Landing Page Component
+const LandingPage = () => {
   // NavBar state
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
@@ -650,5 +650,3 @@ const SinglePage = () => {
     </main>
   );
 };
-
-export default SinglePage;
