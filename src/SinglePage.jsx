@@ -224,7 +224,7 @@ const BentoCard = ({ src, title, description, isComingSoon }) => {
       />
       <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
         <div>
-          <h1 className="bento-title special-font">{title}</h1>
+          <h1 className="uppercase md:text-6xl text-4xl font-black font-zentry special-font">{title}</h1>
           {description && (
             <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
           )}
@@ -236,7 +236,7 @@ const BentoCard = ({ src, title, description, isComingSoon }) => {
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
+            className="border border-white/20 relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
           >
             <div
               className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
@@ -255,8 +255,8 @@ const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 // ImageClipBox Component
-const ImageClipBox = ({ src, clipClass }) => (
-  <div className={clipClass}>
+const ImageClipBox = ({ src, clipClass, style }) => (
+  <div className={clipClass} style={style}>
     <img src={src} />
   </div>
 );
@@ -456,7 +456,7 @@ const SinglePage = () => {
       {/* NavBar */}
       <div
         ref={navContainerRef}
-        className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
+        className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6 bg-black/20 backdrop-blur-md rounded-lg border border-white/20"
       >
         <header className="absolute top-1/2 w-full -translate-y-1/2">
           <nav className="flex size-full items-center justify-between p-4">
@@ -476,7 +476,7 @@ const SinglePage = () => {
                   <a
                     key={index}
                     href={`#${item.toLowerCase()}`}
-                    className="nav-hover-btn"
+                    className="relative ms-10 font-general text-xs uppercase text-blue-50 after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer"
                   >
                     {item}
                   </a>
@@ -496,8 +496,8 @@ const SinglePage = () => {
                 {[1, 2, 3, 4].map((bar) => (
                   <div
                     key={bar}
-                    className={clsx("indicator-line", {
-                      active: isIndicatorActive,
+                    className={clsx("h-1 w-px rounded-full bg-white transition-all duration-200 ease-in-out", {
+                      "animate-pulse": isIndicatorActive,
                     })}
                     style={{
                       animationDelay: `${bar * 0.1}s`,
@@ -525,9 +525,16 @@ const SinglePage = () => {
         <div
           id="video-frame"
           className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
+          style={{
+            clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
+            borderRadius: "0% 0% 40% 10%"
+          }}
         >
           <div>
-            <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
+            <div 
+              className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg"
+              style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+            >
               <VideoPreview>
                 <div
                   onClick={handleMiniVdClick}
@@ -567,13 +574,13 @@ const SinglePage = () => {
             />
           </div>
 
-          <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
+          <h1 className="special-font uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem] absolute bottom-5 right-5 z-40 text-blue-75">
             G<b>A</b>MING
           </h1>
 
           <div className="absolute left-0 top-0 z-40 size-full">
             <div className="mt-24 px-5 sm:px-10">
-              <h1 className="special-font hero-heading text-blue-100">
+              <h1 className="special-font uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem] text-blue-100">
                 redefi<b>n</b>e
               </h1>
 
@@ -591,7 +598,7 @@ const SinglePage = () => {
           </div>
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
+        <h1 className="special-font uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem] absolute bottom-5 right-5 text-black">
           G<b>A</b>MING
         </h1>
       </div>
@@ -605,10 +612,10 @@ const SinglePage = () => {
 
           <AnimatedTitle
             title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
-            containerClass="mt-5 !text-black text-center px-4"
+            containerClass="mt-5 !text-black text-center px-4 flex flex-col gap-1 text-4xl uppercase leading-[.8] text-black sm:text-7xl sm:px-32 md:text-[6rem]"
           />
 
-          <div className="about-subtext z-30">
+          <div className="absolute bottom-[-60vh] sm:bottom-[-80vh] left-1/2 w-full max-w-80 sm:max-w-96 md:max-w-[34rem] -translate-x-1/2 text-center font-circular-web text-base sm:text-lg px-4 sm:px-0 z-30">
             <p>The Game of Games begins—your life, now an epic MMORPG</p>
             <p className="text-gray-500 mt-2">
               Zentry unites every player from countless games and platforms, both
@@ -618,7 +625,10 @@ const SinglePage = () => {
         </div>
 
         <div className="h-dvh w-screen relative" id="clip">
-          <div className="mask-clip-path about-image">
+          <div 
+            className="absolute left-1/2 top-0 z-20 h-[50vh] sm:h-[60vh] w-72 sm:w-80 md:w-96 lg:w-[30vw] origin-center -translate-x-1/2 overflow-hidden rounded-3xl"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+          >
             <img
               src="img/about.webp"
               alt="Background"
@@ -642,7 +652,7 @@ const SinglePage = () => {
             </p>
           </div>
 
-          <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
+          <BentoTilt className="border border-white/20 relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh] transition-transform duration-300 ease-out">
             <BentoCard
               src="videos/feature-1.mp4"
               title={
@@ -656,7 +666,7 @@ const SinglePage = () => {
           </BentoTilt>
 
           <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
-            <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+            <BentoTilt className="relative border border-white/20 col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out row-span-1 md:col-span-1 md:row-span-2">
               <BentoCard
                 src="videos/feature-2.mp4"
                 title={
@@ -669,7 +679,7 @@ const SinglePage = () => {
               />
             </BentoTilt>
 
-            <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+            <BentoTilt className="relative border border-white/20 col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out row-span-1 ms-32 md:col-span-1 md:ms-0">
               <BentoCard
                 src="videos/feature-3.mp4"
                 title={
@@ -682,7 +692,7 @@ const SinglePage = () => {
               />
             </BentoTilt>
 
-            <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+            <BentoTilt className="relative border border-white/20 col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out me-14 md:col-span-1 md:me-0">
               <BentoCard
                 src="videos/feature-4.mp4"
                 title={
@@ -695,9 +705,9 @@ const SinglePage = () => {
               />
             </BentoTilt>
 
-            <BentoTilt className="bento-tilt_2">
+            <BentoTilt className="relative col-span-1 row-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out">
               <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-                <h1 className="bento-title special-font max-w-64 text-black">
+                <h1 className="uppercase md:text-6xl text-4xl font-black font-zentry special-font max-w-64 text-black">
                   M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
                 </h1>
 
@@ -705,7 +715,7 @@ const SinglePage = () => {
               </div>
             </BentoTilt>
 
-            <BentoTilt className="bento-tilt_2">
+            <BentoTilt className="relative col-span-1 row-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out">
               <video
                 src="videos/feature-5.mp4"
                 loop
@@ -728,12 +738,18 @@ const SinglePage = () => {
           <div className="relative size-full">
             <AnimatedTitle
               title="the st<b>o</b>ry of <br /> a hidden real<b>m</b>"
-              containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
+              containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10 flex flex-col gap-1 text-4xl uppercase leading-[.8] text-white sm:text-7xl sm:px-32 md:text-[6rem]"
             />
 
-            <div className="story-img-container">
-              <div className="story-img-mask">
-                <div className="story-img-content">
+            <div className="relative md:h-dvh h-[90vh] w-full" style={{ filter: "url('#flt_tag')" }}>
+              <div 
+                className="absolute left-0 top-0 size-full overflow-hidden md:left-[20%] md:top-[-10%] md:size-4/5"
+                style={{ clipPath: "polygon(4% 0, 83% 21%, 100% 73%, 0% 100%)" }}
+              >
+                <div 
+                  className="absolute w-full md:h-dvh h-[50dvh] opacity-100 left-10 top-16 md:left-0 md:top-10 lg:left-[-300px] lg:top-[-100px]"
+                  style={{ transform: "translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1)" }}
+                >
                   <img
                     ref={frameRef}
                     onMouseMove={handleMouseMove}
@@ -799,11 +815,13 @@ const SinglePage = () => {
           <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
             <ImageClipBox
               src="/img/contact-1.webp"
-              clipClass="contact-clip-path-1"
+              clipClass="absolute"
+              style={{ clipPath: "polygon(25% 0%, 74% 0, 69% 64%, 34% 73%)" }}
             />
             <ImageClipBox
               src="/img/contact-2.webp"
-              clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
+              clipClass="absolute lg:translate-y-40 translate-y-60"
+              style={{ clipPath: "polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%)" }}
             />
           </div>
 
@@ -814,7 +832,8 @@ const SinglePage = () => {
             />
             <ImageClipBox
               src="/img/swordman.webp"
-              clipClass="sword-man-clip-path md:scale-125"
+              clipClass="absolute md:scale-125"
+              style={{ clipPath: "polygon(16% 0, 89% 15%, 75% 100%, 0 97%)" }}
             />
           </div>
 
@@ -825,7 +844,7 @@ const SinglePage = () => {
 
             <AnimatedTitle
               title="let&#39;s b<b>u</b>ild the <br /> new era of <br /> g<b>a</b>ming t<b>o</b>gether."
-              className="special-font !md:text-[6.2rem] w-full font-zentry !text-5xl !font-black !leading-[.9]"
+              className="special-font !md:text-[6.2rem] w-full font-zentry !text-5xl !font-black !leading-[.9] flex flex-col gap-1 uppercase text-white"
             />
 
             <Button title="contact us" containerClass="mt-10 cursor-pointer" />
