@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        zentry: ["zentry", "sans-serif"],
-        general: ["general", "sans-serif"],
-        "circular-web": ["circular-web", "sans-serif"],
-        "robert-medium": ["robert-medium", "sans-serif"],
-        "robert-regular": ["robert-regular", "sans-serif"],
+        zentry: ["Orbitron", "sans-serif"],
+        general: ["Inter", "sans-serif"],
+        "circular-web": ["Space Grotesk", "sans-serif"],
+        "robert-medium": ["Inter", "sans-serif"],
+        "robert-regular": ["Inter", "sans-serif"],
       },
       colors: {
         blue: {
