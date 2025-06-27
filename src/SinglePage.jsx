@@ -275,8 +275,6 @@ const SinglePage = () => {
   // Hero state
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [loadedVideos, setLoadedVideos] = useState(0);
   const totalVideos = 4;
   const nextVdRef = useRef(null);
 
@@ -298,10 +296,6 @@ const SinglePage = () => {
   };
 
   // Hero functions
-  const handleVideoLoad = () => {
-    setLoadedVideos((prev) => prev + 1);
-  };
-
   const handleMiniVdClick = () => {
     setHasClicked(true);
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
@@ -356,12 +350,6 @@ const SinglePage = () => {
       audioElementRef.current.pause();
     }
   }, [isAudioPlaying]);
-
-  useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
-      setLoading(false);
-    }
-  }, [loadedVideos]);
 
   useEffect(() => {
     if (currentScrollY === 0) {
@@ -512,15 +500,6 @@ const SinglePage = () => {
 
       {/* Hero */}
       <div className="relative h-dvh w-screen overflow-x-hidden">
-        {loading && (
-          <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-            <div className="three-body">
-              <div className="three-body__dot"></div>
-              <div className="three-body__dot"></div>
-              <div className="three-body__dot"></div>
-            </div>
-          </div>
-        )}
 
         <div
           id="video-frame"
@@ -540,7 +519,6 @@ const SinglePage = () => {
                     muted
                     id="current-video"
                     className="size-64 origin-center scale-150 object-cover object-center"
-                    onLoadedData={handleVideoLoad}
                   />
                 </div>
               </VideoPreview>
@@ -553,7 +531,6 @@ const SinglePage = () => {
               muted
               id="next-video"
               className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
-              onLoadedData={handleVideoLoad}
             />
             <video
               src={getVideoSrc(
@@ -563,7 +540,6 @@ const SinglePage = () => {
               loop
               muted
               className="absolute left-0 top-0 size-full object-cover object-center"
-              onLoadedData={handleVideoLoad}
             />
           </div>
 

@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        zentry: ["Orbitron", "sans-serif"],
+        anton: ["Anton", "sans-serif"],
         general: ["Inter", "sans-serif"],
         "circular-web": ["Space Grotesk", "sans-serif"],
         "robert-medium": ["Inter", "sans-serif"],
