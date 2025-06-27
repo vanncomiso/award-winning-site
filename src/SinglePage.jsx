@@ -601,10 +601,10 @@ const SinglePage = () => {
       <section className="bg-black pb-52">
         <div className="container mx-auto px-3 md:px-10">
           <div className="px-5 py-32">
-            <p className="font-circular-web text-lg text-blue-50">
+            <p className="font-anton text-lg text-blue-50 uppercase">
               Into the Metagame Layer
             </p>
-            <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
+            <p className="max-w-md font-general text-lg text-blue-50 opacity-50">
               Immerse yourself in a rich and ever-expanding universe where a vibrant
               array of products converge into an interconnected overlay experience
               on your world.
@@ -690,7 +690,7 @@ const SinglePage = () => {
       {/* Story */}
       <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
         <div className="flex size-full flex-col items-center py-10 pb-24">
-          <p className="font-general text-sm uppercase md:text-[10px]">
+          <p className="font-anton text-sm uppercase md:text-[10px]">
             the multiversal ip world
           </p>
 
@@ -746,7 +746,7 @@ const SinglePage = () => {
 
           <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
             <div className="flex h-full w-fit flex-col items-center md:items-start">
-              <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start">
+              <p className="mt-3 max-w-sm text-center font-general text-violet-50 md:text-start">
                 Where realms converge, lies Zentry and the boundless pillar.
                 Discover its secrets and shape your fate amidst infinite
                 opportunities.
@@ -763,49 +763,11 @@ const SinglePage = () => {
       </div>
 
       {/* Contact */}
-      <div id="contact" className="my-20 min-h-96 w-screen px-10">
-        <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
-          <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
-            <ImageClipBox
-              src="/img/contact-1.webp"
-              clipClass="contact-clip-path-1"
-            />
-            <ImageClipBox
-              src="/img/contact-2.webp"
-              clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
-            />
-          </div>
-
-          <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
-            <ImageClipBox
-              src="/img/swordman-partial.webp"
-              clipClass="absolute md:scale-125"
-            />
-            <ImageClipBox
-              src="/img/swordman.webp"
-              clipClass="sword-man-clip-path md:scale-125"
-            />
-          </div>
-
-          <div className="flex flex-col items-center text-center">
-            <p className="mb-10 font-general text-[10px] uppercase">
-              Join Zentry
-            </p>
-
-            <AnimatedTitle
-              title="let&#39;s b<b>u</b>ild the <br /> new era of <br /> g<b>a</b>ming t<b>o</b>gether."
-              className="special-font !md:text-[6.2rem] w-full font-zentry !text-5xl !font-black !leading-[.9]"
-            />
-
-            <Button title="contact us" containerClass="mt-10 cursor-pointer" />
-          </div>
-        </div>
-      </div>
 
       {/* Footer */}
       <footer className="w-screen bg-[#5542ff] py-4 text-black">
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row">
-          <p className="text-center text-sm font-light md:text-left">
+          <p className="text-center text-sm font-general md:text-left">
             ©Nova 2024. All rights reserved
           </p>
 
@@ -825,7 +787,7 @@ const SinglePage = () => {
 
           <a
             href="#privacy-policy"
-            className="text-center text-sm font-light hover:underline md:text-right"
+            className="text-center text-sm font-general hover:underline md:text-right"
           >
             Privacy Policy
           </a>

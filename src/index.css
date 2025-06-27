@@ -50,7 +50,7 @@ body {
   }
 
   .about-subtext {
-    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem] px-4 sm:px-0;
+    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-general text-lg md:max-w-[34rem] px-4 sm:px-0;
   }
 
   .about-image {
