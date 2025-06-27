@@ -597,7 +597,7 @@ const SinglePage = () => {
       </div>
 
       {/* About */}
-      <div id="about" className="min-h-screen w-screen">
+      <div id="about" className="min-h-screen w-screen overflow-hidden">
         <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
           <p className="font-general text-sm uppercase md:text-[10px]">
             Welcome to Zentry
@@ -605,19 +605,19 @@ const SinglePage = () => {
 
           <AnimatedTitle
             title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
-            containerClass="mt-5 !text-black text-center"
+            containerClass="mt-5 !text-black text-center px-4"
           />
 
-          <div className="about-subtext">
+          <div className="about-subtext z-30">
             <p>The Game of Games begins—your life, now an epic MMORPG</p>
-            <p className="text-gray-500">
+            <p className="text-gray-500 mt-2">
               Zentry unites every player from countless games and platforms, both
               digital and physical, into a unified Play Economy
             </p>
           </div>
         </div>
 
-        <div className="h-dvh w-screen" id="clip">
+        <div className="h-dvh w-screen relative" id="clip">
           <div className="mask-clip-path about-image">
             <img
               src="img/about.webp"

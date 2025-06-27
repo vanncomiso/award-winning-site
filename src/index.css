@@ -73,15 +73,15 @@ body {
   }
 
   .about-subtext {
-    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
+    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem] px-4 sm:px-0;
   }
 
   .about-image {
-    @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
+    @apply absolute left-1/2 top-0 z-20 h-[60vh] w-80 origin-center -translate-x-1/2 overflow-hidden rounded-3xl sm:w-96 md:w-[30vw];
   }
 
   .animated-title {
-    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
+    @apply flex flex-col gap-1 text-4xl uppercase leading-[.8] text-white sm:text-7xl sm:px-32 md:text-[6rem];
   }
 
   .animated-word {
@@ -89,6 +89,20 @@ body {
     transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
+  }
+
+  @media (max-width: 640px) {
+    .about-subtext {
+      @apply bottom-[-60dvh] max-w-80 text-base;
+    }
+    
+    .about-image {
+      @apply h-[50vh] w-72;
+    }
+    
+    .animated-title {
+      @apply text-3xl gap-0;
+    }
   }
 
   .bento-tilt_1 {
