@@ -294,24 +294,6 @@ const SinglePage = () => {
 
   // GSAP Animations
   useGSAP(() => {
-    gsap.set("#video-frame", {
-      clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
-      borderRadius: "0% 0% 40% 10%",
-    });
-    gsap.from("#video-frame", {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      borderRadius: "0% 0% 0% 0%",
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: "#video-frame",
-        start: "center center",
-        end: "bottom center",
-        scrub: true,
-      },
-    });
-  });
-
-  useGSAP(() => {
     const clipAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: "#clip",
@@ -390,40 +372,34 @@ const SinglePage = () => {
       </div>
 
       {/* Hero */}
-      <div className="relative h-dvh w-screen overflow-x-hidden">
+      <div className="relative h-dvh w-screen overflow-x-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+        {/* Static dark background */}
+        <div className="absolute left-0 top-0 size-full bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
 
-        <div
-          id="video-frame"
-          className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-gray-900"
-        >
-          {/* Static dark background */}
-          <div className="absolute left-0 top-0 size-full bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-gray-600">
+          G<b>A</b>MING
+        </h1>
 
-          <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-gray-600">
-            G<b>A</b>MING
-          </h1>
+        <div className="absolute left-0 top-0 z-40 size-full">
+          <div className="mt-24 px-5 sm:px-10">
+            <h1 className="special-font hero-heading text-blue-100">
+              redefi<b>n</b>e
+            </h1>
 
-          <div className="absolute left-0 top-0 z-40 size-full">
-            <div className="mt-24 px-5 sm:px-10">
-              <h1 className="special-font hero-heading text-blue-100">
-                redefi<b>n</b>e
-              </h1>
+            <p className="mb-5 max-w-64 font-general text-blue-100">
+              Enter the Metagame Layer <br /> Unleash the Play Economy
+            </p>
 
-              <p className="mb-5 max-w-64 font-general text-blue-100">
-                Enter the Metagame Layer <br /> Unleash the Play Economy
-              </p>
-
-              <Button
-                id="watch-trailer"
-                title="Watch trailer"
-                leftIcon={<TiLocationArrow />}
-                containerClass="bg-yellow-300 flex-center gap-1"
-              />
-            </div>
+            <Button
+              id="watch-trailer"
+              title="Watch trailer"
+              leftIcon={<TiLocationArrow />}
+              containerClass="bg-yellow-300 flex-center gap-1"
+            />
           </div>
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 text-gray-800">
           G<b>A</b>MING
         </h1>
       </div>
