@@ -394,10 +394,10 @@ const SinglePage = () => {
 
         <div
           id="video-frame"
-          className="relative z-10 h-dvh w-screen rounded-lg bg-gray-900"
+          className="relative z-10 h-dvh w-screen overflow-hidden rounded-3xl bg-gray-900"
         >
           {/* Static dark background */}
-          <div className="absolute left-0 top-0 size-full bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl"></div>
+          <div className="absolute left-0 top-0 size-full bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
 
           <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-gray-600">
             G<b>A</b>MING
