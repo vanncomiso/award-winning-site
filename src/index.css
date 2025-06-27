@@ -109,6 +109,20 @@ body {
     transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
   }
 
+  @media (max-width: 768px) {
+    .story-img-container {
+      @apply h-[60vh];
+    }
+    
+    .story-img-mask {
+      @apply left-0 top-0 size-full;
+    }
+    
+    .story-img-content {
+      @apply left-0 top-0 h-[60vh];
+    }
+  }
+
   .gallery-img-container {
     @apply size-64 overflow-hidden bg-violet-300;
   }
