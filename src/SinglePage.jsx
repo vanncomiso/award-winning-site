@@ -85,77 +85,6 @@ const AnimatedTitle = ({ title, containerClass }) => {
   );
 };
 
-// VideoPreview Component
-const VideoPreview = ({ children }) => {
-  const [isHovering, setIsHovering] = useState(false);
-  const sectionRef = useRef(null);
-  const contentRef = useRef(null);
-
-  const handleMouseMove = ({ clientX, clientY, currentTarget }) => {
-    const rect = currentTarget.getBoundingClientRect();
-    const xOffset = clientX - (rect.left + rect.width / 2);
-    const yOffset = clientY - (rect.top + rect.height / 2);
-
-    if (isHovering) {
-      gsap.to(sectionRef.current, {
-        x: xOffset,
-        y: yOffset,
-        rotationY: xOffset / 2,
-        rotationX: -yOffset / 2,
-        transformPerspective: 500,
-        duration: 1,
-        ease: "power1.out",
-      });
-
-      gsap.to(contentRef.current, {
-        x: -xOffset,
-        y: -yOffset,
-        duration: 1,
-        ease: "power1.out",
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (!isHovering) {
-      gsap.to(sectionRef.current, {
-        x: 0,
-        y: 0,
-        rotationY: 0,
-        rotationX: 0,
-        duration: 1,
-        ease: "power1.out",
-      });
-
-      gsap.to(contentRef.current, {
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power1.out",
-      });
-    }
-  }, [isHovering]);
-
-  return (
-    <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-      className="absolute z-50 size-full overflow-hidden rounded-lg"
-      style={{ perspective: "500px" }}
-    >
-      <div
-        ref={contentRef}
-        className="origin-center rounded-lg"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {children}
-      </div>
-    </section>
-  );
-};
-
 // BentoTilt Component
 const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -274,9 +203,6 @@ const SinglePage = () => {
 
   // Hero state
   const [currentIndex, setCurrentIndex] = useState(1);
-  const [hasClicked, setHasClicked] = useState(false);
-  const totalVideos = 4;
-  const nextVdRef = useRef(null);
 
   // Story state
   const frameRef = useRef(null);
@@ -294,14 +220,6 @@ const SinglePage = () => {
     setIsAudioPlaying((prev) => !prev);
     setIsIndicatorActive((prev) => !prev);
   };
-
-  // Hero functions
-  const handleMiniVdClick = () => {
-    setHasClicked(true);
-    setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
-  };
-
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
   // Story functions
   const handleMouseMove = (e) => {
@@ -375,33 +293,6 @@ const SinglePage = () => {
   }, [isNavVisible]);
 
   // GSAP Animations
-  useGSAP(
-    () => {
-      if (hasClicked) {
-        gsap.set("#next-video", { visibility: "visible" });
-        gsap.to("#next-video", {
-          transformOrigin: "center center",
-          scale: 1,
-          width: "100%",
-          height: "100%",
-          duration: 1,
-          ease: "power1.inOut",
-          onStart: () => nextVdRef.current.play(),
-        });
-        gsap.from("#current-video", {
-          transformOrigin: "center center",
-          scale: 0,
-          duration: 1.5,
-          ease: "power1.inOut",
-        });
-      }
-    },
-    {
-      dependencies: [currentIndex],
-      revertOnUpdate: true,
-    }
-  );
-
   useGSAP(() => {
     gsap.set("#video-frame", {
       clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
@@ -503,47 +394,12 @@ const SinglePage = () => {
 
         <div
           id="video-frame"
-          className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
+          className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-gray-900"
         >
-          <div>
-            <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
-              <VideoPreview>
-                <div
-                  onClick={handleMiniVdClick}
-                  className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
-                >
-                  <video
-                    ref={nextVdRef}
-                    src={getVideoSrc((currentIndex % totalVideos) + 1)}
-                    loop
-                    muted
-                    id="current-video"
-                    className="size-64 origin-center scale-150 object-cover object-center"
-                  />
-                </div>
-              </VideoPreview>
-            </div>
+          {/* Static dark background */}
+          <div className="absolute left-0 top-0 size-full bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
 
-            <video
-              ref={nextVdRef}
-              src={getVideoSrc(currentIndex)}
-              loop
-              muted
-              id="next-video"
-              className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
-            />
-            <video
-              src={getVideoSrc(
-                currentIndex === totalVideos - 1 ? 1 : currentIndex
-              )}
-              autoPlay
-              loop
-              muted
-              className="absolute left-0 top-0 size-full object-cover object-center"
-            />
-          </div>
-
-          <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
+          <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-gray-600">
             G<b>A</b>MING
           </h1>
 
@@ -553,7 +409,7 @@ const SinglePage = () => {
                 redefi<b>n</b>e
               </h1>
 
-              <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
+              <p className="mb-5 max-w-64 font-general text-blue-100">
                 Enter the Metagame Layer <br /> Unleash the Play Economy
               </p>
 
@@ -575,7 +431,7 @@ const SinglePage = () => {
       {/* About */}
       <div id="about" className="min-h-screen w-screen overflow-hidden">
         <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
-          <p className="font-general text-sm uppercase md:text-[10px]">
+          <p className="font-anton text-sm uppercase md:text-[10px]">
             Welcome to Zentry
           </p>
 
@@ -763,6 +619,44 @@ const SinglePage = () => {
       </div>
 
       {/* Contact */}
+      <div id="contact" className="my-20 min-h-96 w-screen px-10">
+        <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
+          <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
+            <ImageClipBox
+              src="/img/contact-1.webp"
+              clipClass="contact-clip-path-1"
+            />
+            <ImageClipBox
+              src="/img/contact-2.webp"
+              clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
+            />
+          </div>
+
+          <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
+            <ImageClipBox
+              src="/img/swordman-partial.webp"
+              clipClass="absolute md:scale-125"
+            />
+            <ImageClipBox
+              src="/img/swordman.webp"
+              clipClass="sword-man-clip-path md:scale-125"
+            />
+          </div>
+
+          <div className="flex flex-col items-center text-center">
+            <p className="mb-10 font-anton text-[10px] uppercase">
+              Join Zentry
+            </p>
+
+            <AnimatedTitle
+              title="let&#39;s b<b>u</b>ild the <br /> new era of <br /> g<b>a</b>ming t<b>o</b>gether."
+              className="special-font !md:text-[6.2rem] w-full font-anton !text-5xl !font-black !leading-[.9]"
+            />
+
+            <Button title="contact us" containerClass="mt-10 cursor-pointer" />
+          </div>
+        </div>
+      </div>
 
       {/* Footer */}
       <footer className="w-screen bg-[#5542ff] py-4 text-black">

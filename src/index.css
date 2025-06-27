@@ -42,7 +42,7 @@ body {
 
   .special-font b {
     font-family: "Anton", sans-serif;
-    font-feature-settings: "ss01" on;
+    font-weight: 400;
   }
 
   .hero-heading {
@@ -62,7 +62,7 @@ body {
   }
 
   .animated-word {
-    @apply special-font font-anton opacity-0;
+    @apply font-anton opacity-0;
     transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
@@ -91,7 +91,7 @@ body {
   }
 
   .bento-title {
-    @apply uppercase md:text-6xl text-4xl font-anton;
+    @apply uppercase md:text-6xl text-4xl font-anton font-normal;
   }
 
   .story-img-container {
