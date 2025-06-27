@@ -261,8 +261,8 @@ const ImageClipBox = ({ src, clipClass }) => (
   </div>
 );
 
-// Main Landing Page Component
-const LandingPage = () => {
+// Main Single Page Component
+const SinglePage = () => {
   // NavBar state
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
@@ -416,8 +416,8 @@ const LandingPage = () => {
 
   useGSAP(() => {
     gsap.set("#video-frame", {
-      clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
-      borderRadius: "0% 0% 30% 30%",
+      clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
+      borderRadius: "0% 0% 40% 10%",
     });
     gsap.from("#video-frame", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
@@ -866,4 +866,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default SinglePage;
