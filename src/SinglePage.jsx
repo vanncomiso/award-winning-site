@@ -608,13 +608,6 @@ const SinglePage = () => {
             containerClass="mt-5 !text-black text-center px-4"
           />
 
-          <div className="about-subtext z-30">
-            <p>The Game of Games begins—your life, now an epic MMORPG</p>
-            <p className="text-gray-500 mt-2">
-              Zentry unites every player from countless games and platforms, both
-              digital and physical, into a unified Play Economy
-            </p>
-          </div>
         </div>
 
         <div className="h-dvh w-screen relative" id="clip">
