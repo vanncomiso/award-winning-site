@@ -496,8 +496,8 @@ const SinglePage = () => {
                 {[1, 2, 3, 4].map((bar) => (
                   <div
                     key={bar}
-                    className={clsx("h-1 w-px rounded-full bg-white transition-all duration-200 ease-in-out", {
-                      "animate-pulse": isIndicatorActive,
+                    className={clsx("indicator-line", {
+                      active: isIndicatorActive,
                     })}
                     style={{
                       animationDelay: `${bar * 0.1}s`,

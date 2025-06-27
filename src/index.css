@@ -43,10 +43,6 @@ body {
     font-family: "Zentry";
     font-feature-settings: "ss01" on;
   }
-  
-  .flex-center {
-    @apply flex justify-center items-center;
-  }
 
   .animated-word {
     @apply special-font font-zentry font-black opacity-0;
@@ -56,8 +52,31 @@ body {
   }
 }
 
-/* From Uiverse.io by G4b413l */
-/* https://uiverse.io/G4b413l/tidy-walrus-92 */
+.indicator-line {
+  @apply h-1 w-px rounded-full bg-white transition-all duration-200 ease-in-out;
+}
+
+.indicator-line.active {
+  animation: indicator-line 0.5s ease infinite;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+}
+
+@keyframes indicator-line {
+  0% {
+    height: 4px;
+    transform: translateY(-0px);
+  }
+  50% {
+    height: 16px;
+    transform: translateY(-4px);
+  }
+  100% {
+    height: 4px;
+    transform: translateY(-0px);
+  }
+}
+
+/* Loading spinner animation */
 .three-body {
   --uib-size: 35px;
   --uib-speed: 0.8s;
