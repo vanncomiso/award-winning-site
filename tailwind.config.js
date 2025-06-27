@@ -7,8 +7,6 @@ export default {
         anton: ["Anton", "sans-serif"],
         general: ["Inter", "sans-serif"],
         "circular-web": ["Space Grotesk", "sans-serif"],
-        "robert-medium": ["Inter", "sans-serif"],
-        "robert-regular": ["Inter", "sans-serif"],
       },
       colors: {
         blue: {
